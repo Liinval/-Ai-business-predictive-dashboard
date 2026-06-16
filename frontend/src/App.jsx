@@ -12,8 +12,8 @@ function App() {
   const fetchPrediction = async () => {
   setLoading(true);
   try {
-   
-    const response = await axios.post('http://localhost:5000/api/predict', inputs);
+   const  API_BASE_URL =import.meta.env.VITE_API_URL||'http://localhost:5000';
+    const response = await axios.post('${API_BASE_URL}/api/predict', inputs);
     
     
     setData(response.data);
@@ -53,7 +53,7 @@ function App() {
           <div className="space-y-6">
             <div>
               <div className="flex justify-between mb-2">
-                <label className="text-sm font-medium text-slate-600">Marketing Budget Weight</label>
+                <label className="text-sm font-medium text-slate-600">Marketing Budget Weight </label>
                 <span className="text-sm font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">{inputs.marketing}</span>
               </div>
               <input 

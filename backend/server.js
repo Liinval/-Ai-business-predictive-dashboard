@@ -5,7 +5,9 @@ require('dotenv').config();
 
 
 const app =express();
-app.use(cors())
+app.use(cors({
+    origin: `https://ai-business-predictive-dashboard.vercel.app`
+}));
 app.use(express.json())
 
 
@@ -44,9 +46,9 @@ app.post('/api/predict',(req , res)=>{
     const predictedRevenue = Math.round(rawPrediction.revenue * MAX_REVENUE);
 
     const dashboardData = [
-        {name : 'Month 1', actualRevenue:25000 ,marketing :2000, users:3000},
-        {name : 'Month 2', actualRevenue:48000 ,marketing :4000, users:5000},
-        {name : 'Month 3', actualRevenue:79000 ,marketing :7000, users:8000},
+        {name : 'Month 1', actualRevenue:250 ,marketing :20, users:30},
+        {name : 'Month 2', actualRevenue:480 ,marketing :40, users:50},
+        {name : 'Month 3', actualRevenue:790 ,marketing :70, users:80},
         {name : 'Month 4 (Predicted)', predictedRevenue:'predictedRevenue' ,marketing : marketing * 1000, users: users* 1000}
         ];
 
